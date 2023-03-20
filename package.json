@@ -10,7 +10,7 @@
         "build": "webpack --mode production",
         "lint": "eslint src",
         "predeploy": "yarn run build",
-        "deploy": "gh-pages -d serve"
+        "deploy": "gh-pages -d build"
     },
     "resolutions": {
         "react-spring": "9.0.1",
