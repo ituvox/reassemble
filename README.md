@@ -18,7 +18,7 @@ with your exact kill time, party composition, and playstyle by leveraging FFLogs
 
 ✔️ Reaper [6.2]
 
-✔️ Black Mage [6.3] by Itu Wizard @ Leviathan
+✔️ Black Mage [6.3] (by Itu Wizard @ Leviathan)
 
 ## Contributing
 
