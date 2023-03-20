@@ -7,8 +7,10 @@ import { DamageInstance } from 'simulator/damage'
 import { Enemy, Player } from 'simulator/entity'
 import { Stats } from 'simulator/gear/stats'
 import { RAID_DEBUFFS } from 'simulator/raidbuffs'
+import { formatSeconds } from 'utilities/format'
 import { CastHandler, DamageHandler } from './handlers'
 
+// ToDo: ENEMY DEBUFFS ARE BEING IGNORED. CAREFUL.
 export class Simulator {
     public player: Player
 
@@ -29,7 +31,7 @@ export class Simulator {
     private handleCastInstance: CastHandler = (cast) => {
         const enemy = this.enemies.get(cast.targetKey)
         if (enemy) {
-            cast.buffs.push(...enemy.activeDebuffs)
+            // cast.buffs.push(...enemy.activeDebuffs)
         }
     }
 
@@ -75,20 +77,33 @@ export class Simulator {
 
         let totalDamage = 0
         let lastDamageTime = 0
+        let totalPotency = 0 // ignores buffs and potion
         const damageArray: Array<{ x: number, y: number }> = []
-
+        
         this.damageInstances.forEach(instance => {
             // Adjust potency if the job logic specifies it
             if (instance.options.postAdjustment) {
                 instance.potency = instance.options.postAdjustment()
             }
 
+            var timeSoFar = (instance.timestamp - this.parser.fight.start) / 1000
+
+            /*const offsetTime = 14*60+39
+            if (timeSoFar < offsetTime) return
+            timeSoFar -= offsetTime*/
+            
             // TODO level stuff (90 assumed for now)
             // eslint-disable-next-line @typescript-eslint/no-magic-numbers
             const damage = expectedDamage(instance, this.player.jobInfo, 90, stats)
             totalDamage += damage
 
-            const timeSoFar = (instance.timestamp - this.parser.fight.start) / 1000
+            // TODO: Stdv stuff would go here
+            if (instance.type != 'DoT'){
+                console.log('Hit with potency:', instance.potency, 'Damage:', damage, ' (ratio ', damage/instance.potency, ') Time so far:', formatSeconds(timeSoFar))
+                //console.log(instance)
+                //console.log('Damage:', damage, 'Time so far:', formatSeconds(timeSoFar))
+                totalPotency += instance.potency
+            }
 
             // Add a new data point to the graph at most every 2 seconds
             if (timeSoFar > lastDamageTime + 2) {
@@ -97,6 +112,8 @@ export class Simulator {
                 lastDamageTime = timeSoFar
             }
         })
+
+        console.log('Total potency (no pot, no eno, no DoT): ', totalPotency)
 
         const duration = (this.parser.fight.end - this.parser.fight.start) / 1000
         const expected = totalDamage / duration

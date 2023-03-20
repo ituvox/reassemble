@@ -3,14 +3,18 @@
     "version": "0.0.0",
     "private": true,
     "sideEffects": false,
+    "homepage": "https://ituvox.github.io/reassemble",
     "scripts": {
         "serve": "webpack serve --hot --mode development --open",
         "start": "webpack serve --mode production",
         "build": "webpack --mode production",
-        "lint": "eslint src"
+        "lint": "eslint src",
+        "predeploy": "yarn run build",
+        "deploy": "gh-pages -d serve"
     },
     "resolutions": {
-        "react-spring": "9.0.1"
+        "react-spring": "9.0.1",
+        "@types/react": "^17.0.34"
     },
     "dependencies": {
         "@material-ui/core": "^4.11.3",
@@ -26,7 +30,6 @@
         "react-router-dom": "^5.2.0",
         "react-transition-group": "^4.4.2",
         "react-virtualized-auto-sizer": "^1.0.4",
-        "ts-node": "^9.1.1",
         "uuid": "^8.3.2"
     },
     "devDependencies": {
@@ -48,6 +51,7 @@
         "eslint-plugin-import": "^2.23.4",
         "eslint-plugin-react": "^7.24.0",
         "eslint-plugin-react-hooks": "^4.2.0",
+        "gh-pages": "^5.0.0",
         "html-webpack-plugin": "^5.1.0",
         "mini-css-extract-plugin": "^1.3.6",
         "postcss": "^8.2.6",

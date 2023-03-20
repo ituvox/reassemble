@@ -52,4 +52,13 @@ export const JOB_MODS: Record<Job, JobModifiers> = {
         [Attribute.INT]: 80,
         [Attribute.MND]: 40,
     },
+    BlackMage: {
+        [Attribute.HP]: 105,
+        [Attribute.MP]: 100,
+        [Attribute.STR]: 40,
+        [Attribute.VIT]: 100,
+        [Attribute.DEX]: 100,
+        [Attribute.INT]: 115,
+        [Attribute.MND]: 75,
+    },
 }

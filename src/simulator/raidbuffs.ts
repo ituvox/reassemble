@@ -41,7 +41,7 @@ export const RAID_BUFFS: Buff[] = [
     },
     {
         statusID: RAIDBUFFS.STATUSES.MEDICATED.id,
-        mainStat: 464,
+        mainStat: 223,
     },
     {
         statusID: RAIDBUFFS.STATUSES.ARCANE_CIRCLE.id,

@@ -29,7 +29,7 @@ export class Footer extends React.Component {
                 </Box>
                 <Grid item xs={12}>
                     <Typography align="center" color="textSecondary">
-                        Made by Chione Frost @ Sargatanas.
+                        Made by Chione Frost @ Sargatanas, BLM module by Itu Wizard @ Leviathan (errors are probably my fault)
                     </Typography>
                 </Grid>
             </Grid>

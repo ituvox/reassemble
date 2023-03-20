@@ -76,7 +76,7 @@ function baseDoTDamage(
     const det = Funcs.fDET(stats.determination, level)
     const ap = Funcs.fAP(mainstat, level)
     const tnc = 1000 // TODO
-    const spd = Funcs.fSPD(stats.skillspeed, level) // TODO speed
+    const spd = Funcs.fSPD(Math.max(stats.spellspeed, stats.skillspeed), level) // TODO speed
     const wd = Funcs.fWD(stats.weaponDamage, level, jobMod_att)
 
     const d1 = fl(fl(fl(potency * ap * det) / 100) / 1000)
@@ -118,6 +118,8 @@ export function expectedDamage(hit: DamageInstance, job: JobInfo, level: Level, 
         mainStat = 'strength'
     } else if (attribute === Attribute.DEX) {
         mainStat = 'dexterity'
+    } else if (attribute === Attribute.INT) {
+        mainStat = 'intelligence'
     }
 
     // Apply mainstat buffs

@@ -86,7 +86,10 @@ async function getGear(gearset: EtroResponseGearset, weaponDamageType: DamageKey
         // Get weapon damage
         if (weaponDamageType in equip) {
             equipStats.weaponDamage = equip[weaponDamageType]
+            console.log(equipStats.weaponDamage)
         }
+        // No idea why the above doesn't work for BLM, this is a hackish solution
+        equipStats.weaponDamage = ( equip.damagePhys?? 0 )
 
         const maxSubstat = Object.keys(equipStats)
             .filter(stat => ['critical', 'skillspeed', 'spellspeed', 'determination', 'direct', 'piety', 'tenacity'].includes(stat))

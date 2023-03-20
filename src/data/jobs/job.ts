@@ -15,6 +15,7 @@ export type Job =
     | 'Machinist'
     | 'Ninja'
     | 'Reaper'
+    | 'BlackMage'
 
 export type Role =
     | 'Tank'

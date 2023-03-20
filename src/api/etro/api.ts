@@ -6,13 +6,13 @@ export const statIDs: Record<number, keyof Stats> = {
     [1]: 'strength',
     [2]: 'dexterity',
     [3]: 'vitality',
-    [-2]: 'intelligence', // TODO
+    [4]: 'intelligence', // TODO, is this even the right id ???
     [-3]: 'mind', // TODO
     [22]: 'direct',
     [27]: 'critical',
     [44]: 'determination',
     [45]: 'skillspeed',
-    [-4]: 'spellspeed', // TODO
+    [46]: 'spellspeed', // TODO
     [-5]: 'tenacity', // TODO
 }
 

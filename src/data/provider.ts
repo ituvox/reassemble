@@ -1,4 +1,4 @@
-import { ALL, BRD, DNC, MCH, NIN, RPR, RAIDBUFFS } from './packs'
+import { ALL, BRD, DNC, MCH, NIN, RPR, BLM, RAIDBUFFS } from './packs'
 import { Action, Debuff, Status } from './types'
 
 const ACTIONS = {
@@ -8,6 +8,7 @@ const ACTIONS = {
     ...MCH.ACTIONS,
     ...NIN.ACTIONS,
     ...RPR.ACTIONS,
+    ...BLM.ACTIONS,
 }
 
 const STATUSES = {
@@ -17,6 +18,7 @@ const STATUSES = {
     ...MCH.STATUSES,
     ...NIN.STATUSES,
     ...RPR.STATUSES,
+    ...BLM.STATUSES,
     ...RAIDBUFFS.STATUSES,
 }
 
@@ -25,6 +27,7 @@ const DEBUFFS = {
     ...MCH.DEBUFFS,
     ...NIN.DEBUFFS,
     ...RPR.DEBUFFS,
+    ...BLM.DEBUFFS,
 }
 
 /**
